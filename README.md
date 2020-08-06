@@ -1,6 +1,6 @@
 ![Clique Logo]()
 
-# CliQue: A Description
+# Clique: A Description
 
 This application allows the user to create, update, and delete game postings.
 
