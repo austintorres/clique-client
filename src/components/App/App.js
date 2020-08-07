@@ -10,6 +10,7 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import GameIndex from '../GameActions/GameIndex'
 import GameCreate from '../GameActions/GameCreate'
+import GameShow from '../GameActions/GameShow'
 
 class App extends Component {
   constructor () {
@@ -61,6 +62,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/create' render={() => (
             <GameCreate msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/games/:id' render={(props) => (
+            <GameShow {...props} msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { Spinner, Button, Card } from 'react-bootstrap'
+import { Spinner, Button } from 'react-bootstrap'
 
 import apiUrl from './../../apiConfig.js'
 

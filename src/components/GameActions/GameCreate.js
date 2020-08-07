@@ -1,7 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 
 import apiUrl from './../../apiConfig.js'
@@ -46,7 +45,6 @@ class GameCreate extends React.Component {
       .then((res) => this.setState ({
         gameId: res.data.game._id
       }))
-      // .then(this.props.createdGame)
       .then(() => console.log(this.state))
       .catch(console.error)
   }
@@ -55,17 +53,26 @@ class GameCreate extends React.Component {
     if (this.state.gameId) {
       return <Redirect to={`/games`} />
     }
+
     return (
       <div>
-      <Form onSubmit={this.handleSubmit}>
-          <Form.Label>Video Game:</Form.Label>
-          <Form.Control
-            onChange={this.handleInputChange}
-            value={this.state.game.title}
-            name="title"
-            placeholder="Enter video game title"
-            required={true}
-            />
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Label>Video Game</Form.Label>
+          <Form.Control as="select" onChange={this.handleInputChange} value={this.state.game.title} name="title">
+            <option>Call of Duty: Warzone</option>
+            <option>Fortnite</option>
+            <option>Counter Strike: Global Offensive</option>
+            <option>League of Legends</option>
+            <option>Valorant</option>
+            <option>Minecraft</option>
+            <option>Apex Legends</option>
+            <option>Overwatch</option>
+            <option>World of Warcraft</option>
+            <option>NBA 2K</option>
+            <option>Rocket League</option>
+            <option>Dungeons & Dragons</option>
+            <option>Rainbow Six: Siege</option>
+          </Form.Control>
           <Form.Label>Message</Form.Label>
           <Form.Control
             onChange={this.handleInputChange}
@@ -74,11 +81,7 @@ class GameCreate extends React.Component {
             placeholder="Example: Looking for a duo"
             />
           <Form.Label>Status</Form.Label>
-          <Form.Control
-            as="select"
-            onChange={this.handleInputChange}
-            value={this.state.game.status}
-            name="status">
+          <Form.Control as="select" onChange={this.handleInputChange} value={this.state.game.status} name="status">
             <option value='true'>Online</option>
             <option value='false'>Offline</option>
           </Form.Control>
