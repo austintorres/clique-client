@@ -1,9 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { Spinner, Button, Card } from 'react-bootstrap'
 
 import apiUrl from './../../apiConfig.js'
-import GameCreate from './GameCreate'
 
 class GameIndex extends React.Component {
   state = {
@@ -11,30 +11,35 @@ class GameIndex extends React.Component {
   }
 
   componentDidMount () {
-    axios.get(apiUrl + '/games')
-      .then(response => {
-        // handle success
-        this.setState({
-          games: response.data.games
-        })
+  return axios({
+    url: apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${this.props.user.token}`
+    }
+  })
+    .then(response => {
+      this.setState({
+        games: response.data.games
       })
-      .catch(error => {
-        // handle error
-        console.log(error)
-      })
+    })
+    .catch(error => {
+      // handle the error
+      console.log(error)
+    })
   }
+
   render () {
-    let jsx
+    let gameJSX
     // if the API has not responded yet
     if (this.state.games === null) {
-      jsx = <p>Loading...</p>
-
+      gameJSX = <Spinner animation="border" role="status"><span className="sr-only">Loading...</span></Spinner>
     // if the API responds with no games
   } else if (this.state.games.length === 0) {
-      jsx = <p>No games, please add a game</p>
+      gameJSX = <p>No one is looking for a game right now, you can always add one!</p>
     // if the API responds with games
     } else {
-      jsx = (
+      gameJSX = (
         <ul>
           {this.state.games.map(game => {
             return (
@@ -49,9 +54,11 @@ class GameIndex extends React.Component {
 
     return (
       <div>
-      <GameCreate />
+      <Link to={`/create`}>
+      <Button variant="primary" size="lg">Create</Button>
+      </Link>
         <h2>People Currently Looking for Games:</h2>
-        {jsx}
+        {gameJSX}
       </div>
     )
   }

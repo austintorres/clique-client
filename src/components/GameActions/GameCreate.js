@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'
@@ -11,7 +12,8 @@ class GameCreate extends React.Component {
       title: '',
       message: '',
       status: false
-    }
+    },
+    gameId: null
   }
 
   handleInputChange = (event) => {
@@ -29,26 +31,30 @@ class GameCreate extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    console.log(this.props)
     axios({
       method: 'POST',
       url: apiUrl + '/games',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.props.user.token}`
+      },
       data: {
         game: this.state.game
       }
     })
-      .then(res => {
-        this.setState({
-          game: {
-            title: '',
-            message: '',
-            status: false
-          }
-        })
-      })
+      .then((res) => this.setState ({
+        gameId: res.data.game._id
+      }))
+      // .then(this.props.createdGame)
+      .then(() => console.log(this.state))
       .catch(console.error)
   }
 
   render () {
+    if (this.state.gameId) {
+      return <Redirect to={`/games`} />
+    }
     return (
       <div>
       <Form onSubmit={this.handleSubmit}>
@@ -76,7 +82,7 @@ class GameCreate extends React.Component {
             <option value='true'>Online</option>
             <option value='false'>Offline</option>
           </Form.Control>
-        <Button variant="primary"  type="submit">Submit</Button>
+        <Button variant="primary" type="submit">Submit</Button>
         </Form>
       </div>
     )
