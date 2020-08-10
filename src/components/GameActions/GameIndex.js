@@ -44,7 +44,10 @@ class GameIndex extends React.Component {
         {this.state.games.map(game => {
           return (
             <li key={game._id}>
-            <Link to={`/games/${game._id}`}>{game.title}</Link>
+              <Link to={{ pathname: `/games/${game._id}`, state: game
+            }} >
+              {game.title}
+              </Link>
             </li>
           )
         })}
@@ -54,12 +57,12 @@ class GameIndex extends React.Component {
 
     return (
       <div>
-      <Link to={`/create`}>
-      <Button variant="primary" size="lg">Create</Button>
-      </Link>
-      <h2>People Currently Looking for Games:</h2>
-      {gameJSX}
-      </div>
+        <Link to={`/create`}>
+          <Button variant="primary" size="lg">Create</Button>
+        </Link>
+        <h2>People Currently Looking for Games:</h2>
+          {gameJSX}
+        </div>
     )
   }
 }

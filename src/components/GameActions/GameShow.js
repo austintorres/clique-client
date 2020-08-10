@@ -11,26 +11,6 @@ class GameShow extends React.Component {
     deleted: false
   }
 
-  componentDidMount () {
-    const gameId = this.props.match.params.id
-    return axios({
-      url: apiUrl + `/games/${gameId}`,
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${this.props.user.token}`
-      }
-    })
-    .then(response => {
-      this.setState({
-        game: response.data.game
-      })
-    })
-    .catch(error => {
-      // handle the error
-      console.log(error)
-    })
-  }
-
   deleteGame = () => {
     const gameId = this.props.match.params.id
     axios({
@@ -48,31 +28,9 @@ class GameShow extends React.Component {
     .catch(console.error)
   }
 
-  updateGame = (gameId, data) => {
-    axios({
-      method: 'PATCH',
-      url: apiUrl + '/games/' + gameId,
-      headers: {
-        'Authorization': `Bearer ${this.props.user.token}`
-      },
-      data: {
-        game: {
-          title: data.title,
-          message: data.message,
-          status: data.status
-        }
-      }
-    })
-    .then(response => {
-      this.setState({
-        updated: true,
-        game: response.data.game
-      })
-    })
-    .catch(console.error)
-  }
-
   render () {
+    const game = this.props.location.state
+    console.log(game)
     if (this.state.deleted === true) {
       return <Redirect to='/games' />
     }
@@ -81,24 +39,27 @@ class GameShow extends React.Component {
 
     let jsx
     // if the API has not responded yet
-    if (this.state.game === null) {
+    if (game === null) {
       jsx = <Spinner animation="border" role="status"><span className="sr-only">Loading...</span></Spinner>
       // after API responds
     } else {
       jsx = (
         <div>
-        <p><strong>Post ID:</strong> {gameId}</p>
-        <p><strong>Status:</strong> {this.state.game.status ? "Online" : "Offline"}</p>
-        <h4><strong>Title:</strong> {this.state.game.title}</h4>
-        <h6><strong>Message:</strong> {this.state.game.message}</h6>
-        <Button variant="success">Update</Button>
-        <Link to={`/games`}><Button variant="danger" onClick={this.deleteGame}>Delete</Button></Link>
+          <p><strong>Post ID:</strong> {gameId}</p>
+          <p><strong>Status:</strong> {game.status ? "Online" : "Offline"}</p>
+          <h4><strong>Title:</strong> {game.title}</h4>
+          <h6><strong>Message:</strong> {game.message}</h6>
+          <Link to={`/games/${gameId}/edit`}>
+            <Button variant="success">Update</Button>
+          </Link>
+          <Button variant="danger" onClick={this.deleteGame}>Delete</Button>
         </div>
       )
     }
+
     return (
       <div>
-      {jsx}
+        {jsx}
       </div>
     )
   }
