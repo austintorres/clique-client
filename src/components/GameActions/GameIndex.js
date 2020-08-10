@@ -11,13 +11,13 @@ class GameIndex extends React.Component {
   }
 
   componentDidMount () {
-  return axios({
-    url: apiUrl + '/games',
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${this.props.user.token}`
-    }
-  })
+    return axios({
+      url: apiUrl + '/games',
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${this.props.user.token}`
+      }
+    })
     .then(response => {
       this.setState({
         games: response.data.games
@@ -34,20 +34,20 @@ class GameIndex extends React.Component {
     // if the API has not responded yet
     if (this.state.games === null) {
       gameJSX = <Spinner animation="border" role="status"><span className="sr-only">Loading...</span></Spinner>
-    // if the API responds with no games
-  } else if (this.state.games.length === 0) {
+      // if the API responds with no games
+    } else if (this.state.games.length === 0) {
       gameJSX = <p>No one is looking for a game right now, you can always add one!</p>
-    // if the API responds with games
+      // if the API responds with games
     } else {
       gameJSX = (
         <ul>
-          {this.state.games.map(game => {
-            return (
-              <li key={game._id}>
-                <Link to={`/games/${game._id}`}>{game.title}</Link>
-              </li>
-            )
-          })}
+        {this.state.games.map(game => {
+          return (
+            <li key={game._id}>
+            <Link to={`/games/${game._id}`}>{game.title}</Link>
+            </li>
+          )
+        })}
         </ul>
       )
     }
@@ -57,8 +57,8 @@ class GameIndex extends React.Component {
       <Link to={`/create`}>
       <Button variant="primary" size="lg">Create</Button>
       </Link>
-        <h2>People Currently Looking for Games:</h2>
-        {gameJSX}
+      <h2>People Currently Looking for Games:</h2>
+      {gameJSX}
       </div>
     )
   }

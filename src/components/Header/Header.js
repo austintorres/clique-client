@@ -7,8 +7,8 @@ const authenticatedOptions = (
   <Fragment>
     <Nav.Link href="#games">Games</Nav.Link>
     <NavDropdown title="Profile" id="basic-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">My Account</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Friend Requests</NavDropdown.Item>
+        <NavDropdown.Item href="#">My Account</NavDropdown.Item>
+        <NavDropdown.Item href="#">Friend Requests</NavDropdown.Item>
         <NavDropdown.Divider />
         <NavDropdown.Item href="#change-password">Change Password</NavDropdown.Item>
         <NavDropdown.Item href="#sign-out">Sign Out</NavDropdown.Item>

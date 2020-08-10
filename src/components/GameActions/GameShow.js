@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import apiUrl from './../../apiConfig'
 
 import { Button, Spinner } from 'react-bootstrap'
@@ -40,12 +40,36 @@ class GameShow extends React.Component {
         'Authorization': `Bearer ${this.props.user.token}`
       }
     })
-      .then(response => {
-        this.setState({
-          deleted: true
-        })
+    .then(response => {
+      this.setState({
+        deleted: true
       })
-      .catch(console.error)
+    })
+    .catch(console.error)
+  }
+
+  updateGame = (gameId, data) => {
+    axios({
+      method: 'PATCH',
+      url: apiUrl + '/games/' + gameId,
+      headers: {
+        'Authorization': `Bearer ${this.props.user.token}`
+      },
+      data: {
+        game: {
+          title: data.title,
+          message: data.message,
+          status: data.status
+        }
+      }
+    })
+    .then(response => {
+      this.setState({
+        updated: true,
+        game: response.data.game
+      })
+    })
+    .catch(console.error)
   }
 
   render () {
@@ -59,22 +83,22 @@ class GameShow extends React.Component {
     // if the API has not responded yet
     if (this.state.game === null) {
       jsx = <Spinner animation="border" role="status"><span className="sr-only">Loading...</span></Spinner>
-    // after API responds
+      // after API responds
     } else {
       jsx = (
         <div>
-          <p><strong>Post ID:</strong> {gameId}</p>
-          <p><strong>Status:</strong> {this.state.game.status}</p>
-          <h4><strong>Title:</strong> {this.state.game.status ? "Online" : "Offline"}</h4>
-          <h6><strong>Message:</strong> {this.state.game.message}</h6>
-          <Button variant="success">Update</Button>
-          <Button variant="danger" onClick={this.deleteGame}>Delete</Button>
+        <p><strong>Post ID:</strong> {gameId}</p>
+        <p><strong>Status:</strong> {this.state.game.status ? "Online" : "Offline"}</p>
+        <h4><strong>Title:</strong> {this.state.game.title}</h4>
+        <h6><strong>Message:</strong> {this.state.game.message}</h6>
+        <Button variant="success">Update</Button>
+        <Link to={`/games`}><Button variant="danger" onClick={this.deleteGame}>Delete</Button></Link>
         </div>
       )
     }
     return (
       <div>
-        {jsx}
+      {jsx}
       </div>
     )
   }
