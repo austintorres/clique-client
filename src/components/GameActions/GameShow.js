@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import apiUrl from './../../apiConfig'
 
-import Button from 'react-bootstrap/Button'
+import { Button, Spinner } from 'react-bootstrap'
 
 class GameShow extends React.Component {
   state = {
@@ -58,14 +58,15 @@ class GameShow extends React.Component {
     let jsx
     // if the API has not responded yet
     if (this.state.game === null) {
-      jsx = <p>Loading...</p>
+      jsx = <Spinner animation="border" role="status"><span className="sr-only">Loading...</span></Spinner>
     // after API responds
     } else {
       jsx = (
         <div>
-          <h3>Title: {this.state.game.title}</h3>
-          <h4>Message: {this.state.game.message}</h4>
-          <h4>Post ID: {gameId}</h4>
+          <p><strong>Post ID:</strong> {gameId}</p>
+          <p><strong>Status:</strong> {this.state.game.status}</p>
+          <h4><strong>Title:</strong> {this.state.game.status ? "Online" : "Offline"}</h4>
+          <h6><strong>Message:</strong> {this.state.game.message}</h6>
           <Button variant="success">Update</Button>
           <Button variant="danger" onClick={this.deleteGame}>Delete</Button>
         </div>

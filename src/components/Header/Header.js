@@ -5,10 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 const authenticatedOptions = (
   <Fragment>
-    <NavDropdown title="Games" id="basic-nav-dropdown">
-        <NavDropdown.Item href="#games">Index</NavDropdown.Item>
-        <NavDropdown.Item href="#show">Find Your Games</NavDropdown.Item>
-      </NavDropdown>
+    <Nav.Link href="#games">Games</Nav.Link>
     <NavDropdown title="Profile" id="basic-nav-dropdown">
         <NavDropdown.Item href="#action/3.1">My Account</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">Friend Requests</NavDropdown.Item>

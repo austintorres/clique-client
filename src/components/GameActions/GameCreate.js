@@ -51,7 +51,7 @@ class GameCreate extends React.Component {
 
   render () {
     if (this.state.gameId) {
-      return <Redirect to={`/games`} />
+    return <Redirect to={`/games`} />
     }
 
     return (
@@ -59,6 +59,7 @@ class GameCreate extends React.Component {
         <Form onSubmit={this.handleSubmit}>
           <Form.Label>Video Game</Form.Label>
           <Form.Control as="select" onChange={this.handleInputChange} value={this.state.game.title} name="title">
+            <option value="disabled">Pick a game title:</option>
             <option>Call of Duty: Warzone</option>
             <option>Fortnite</option>
             <option>Counter Strike: Global Offensive</option>
@@ -82,8 +83,8 @@ class GameCreate extends React.Component {
             />
           <Form.Label>Status</Form.Label>
           <Form.Control as="select" onChange={this.handleInputChange} value={this.state.game.status} name="status">
-            <option value='true'>Online</option>
-            <option value='false'>Offline</option>
+            <option value="true">Online</option>
+            <option value="false">Offline</option>
           </Form.Control>
         <Button variant="primary" type="submit">Submit</Button>
         </Form>
