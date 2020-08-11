@@ -1,9 +1,9 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
-
 import apiUrl from './../../apiConfig.js'
+import messages from './../AutoDismissAlert/messages'
 
 class GameCreate extends React.Component {
   state = {
@@ -30,7 +30,6 @@ class GameCreate extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log(this.props)
     axios({
       method: 'POST',
       url: apiUrl + '/games',
@@ -45,53 +44,61 @@ class GameCreate extends React.Component {
     .then((res) => this.setState ({
       gameId: res.data.game._id
     }))
-    .then(() => console.log(this.state))
-    .catch(console.error)
+    .then(() => this.props.msgAlert({
+      heading: 'Hooray! That Post Was Created!',
+      message: messages.createGameSuccess,
+      variant: 'success'
+    }))
+    .catch(() => this.props.msgAlert({
+      heading: 'Whoops, Something Went Wrong!',
+      message: messages.createGameFailure,
+      variant: 'danger'
+    }))
   }
 
   render () {
     if (this.state.gameId) {
-      return <Redirect to={`/games`} />
+      return <Link to={`/create`} />
     }
 
     return (
-      <div>
-      <Form onSubmit={this.handleSubmit}>
+      <div className="create-form">
+      <h3 className="edit-title">Post A Game:</h3>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Label>Video Game</Form.Label>
+          <Form.Control as="select" onChange={this.handleInputChange} value={this.state.game.title} name="title">
+            <option value="disabled">Pick a game title:</option>
+            <option>Call of Duty: Warzone</option>
+            <option>Fortnite</option>
+            <option>Counter Strike: Global Offensive</option>
+            <option>League of Legends</option>
+            <option>Valorant</option>
+            <option>Minecraft</option>
+            <option>Apex Legends</option>
+            <option>Overwatch</option>
+            <option>World of Warcraft</option>
+            <option>NBA 2K</option>
+            <option>Rocket League</option>
+            <option>Dungeons & Dragons</option>
+            <option>Rainbow Six: Siege</option>
+          </Form.Control>
 
-      <Form.Label>Video Game</Form.Label>
-      <Form.Control as="select" onChange={this.handleInputChange} value={this.state.game.title} name="title">
-      <option value="disabled">Pick a game title:</option>
-      <option>Call of Duty: Warzone</option>
-      <option>Fortnite</option>
-      <option>Counter Strike: Global Offensive</option>
-      <option>League of Legends</option>
-      <option>Valorant</option>
-      <option>Minecraft</option>
-      <option>Apex Legends</option>
-      <option>Overwatch</option>
-      <option>World of Warcraft</option>
-      <option>NBA 2K</option>
-      <option>Rocket League</option>
-      <option>Dungeons & Dragons</option>
-      <option>Rainbow Six: Siege</option>
-      </Form.Control>
+          <Form.Label>Message</Form.Label>
+          <Form.Control
+          onChange={this.handleInputChange}
+          value={this.state.game.message}
+          name="message"
+          placeholder="Example: Looking for a duo"
+          />
 
-      <Form.Label>Message</Form.Label>
-      <Form.Control
-      onChange={this.handleInputChange}
-      value={this.state.game.message}
-      name="message"
-      placeholder="Example: Looking for a duo"
-      />
+          <Form.Label>Status</Form.Label>
+          <Form.Control as="select" onChange={this.handleInputChange} value={this.state.game.status} name="status">
+            <option value="true">Online</option>
+            <option value="false">Offline</option>
+          </Form.Control>
 
-      <Form.Label>Status</Form.Label>
-      <Form.Control as="select" onChange={this.handleInputChange} value={this.state.game.status} name="status">
-      <option value="true">Online</option>
-      <option value="false">Offline</option>
-      </Form.Control>
-
-      <Button variant="primary" type="submit">Submit</Button>
-      </Form>
+          <Button variant="primary" type="submit">Submit</Button>
+        </Form>
       </div>
     )
   }

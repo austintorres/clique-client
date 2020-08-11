@@ -29,10 +29,6 @@ class GameEdit extends React.Component {
         game: response.data.game
       })
     })
-    .catch(error => {
-      // handle the error
-      console.log(error)
-    })
   }
 
   handleInputChange = (event) => {
@@ -66,25 +62,26 @@ class GameEdit extends React.Component {
         game: response.data.game
       })
     })
-    .then(() => console.log(this.props,' update'))
+    .then(() => this.props.msgAlert({
+      heading: 'Hip Hip, Hooray! Update Complete!',
+      variant: 'success'
+    }))
     .catch(console.error)
   }
 
 render () {
+  console.log('game edit render')
   if (this.state.updated === true) {
     return <Redirect to={`/games`} />
   }
 
 return (
-  <div>
-    <h4>Update Your Game:</h4>
     <GameForm
       game={this.state.game}
       handleInputChange={this.handleInputChange}
       handleSubmit={this.handleSubmit}
       cancelPath={`/games`}
     />
-  </div>
     )
   }
 }

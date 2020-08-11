@@ -5,14 +5,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#games">Games</Nav.Link>
-    <NavDropdown title="Profile" id="basic-nav-dropdown">
-      <NavDropdown.Item href="#">My Account</NavDropdown.Item>
-      <NavDropdown.Item href="#">Friend Requests</NavDropdown.Item>
-      <NavDropdown.Divider />
-      <NavDropdown.Item href="#change-password">Change Password</NavDropdown.Item>
-      <NavDropdown.Item href="#sign-out">Sign Out</NavDropdown.Item>
+    <Nav.Link href="#">Apparel</Nav.Link>
+    <NavDropdown title="Gaming" id="basic-nav-dropdown">
+      <NavDropdown.Item href="#games">Show All Games</NavDropdown.Item>
+      <NavDropdown.Item href="#create">Create A Game</NavDropdown.Item>
     </NavDropdown>
+    <Nav.Link href="#change-password">Change Password</Nav.Link>
+    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
   </Fragment>
 )
 
@@ -30,7 +29,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar className="color-nav" variant="dark" expand="md">
     <Navbar.Brand href="#">
       Clique
     </Navbar.Brand>

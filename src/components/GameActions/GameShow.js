@@ -2,8 +2,9 @@ import React from 'react'
 import axios from 'axios'
 import { Redirect, Link } from 'react-router-dom'
 import apiUrl from './../../apiConfig'
+import messages from './../AutoDismissAlert/messages'
 
-import { Button, Spinner } from 'react-bootstrap'
+import { Button, Spinner, Card } from 'react-bootstrap'
 
 class GameShow extends React.Component {
   state = {
@@ -25,7 +26,16 @@ class GameShow extends React.Component {
         deleted: true
       })
     })
-    .catch(console.error)
+    .then(() => this.props.msgAlert({
+      heading: 'Delete Success',
+      message: messages.deleteSuccess,
+      variant: 'success'
+    }))
+    .catch(() => this.props.msgAlert({
+      heading: 'Uh oh! Could not destroy that one!',
+      message: messages.deleteFailure,
+      variant: 'danger'
+    }))
   }
 
   render () {
@@ -44,15 +54,18 @@ class GameShow extends React.Component {
       // after API responds
     } else {
       jsx = (
-        <div>
-          <p><strong>Post ID:</strong> {gameId}</p>
-          <p><strong>Status:</strong> {game.status ? "Online" : "Offline"}</p>
-          <h4><strong>Title:</strong> {game.title}</h4>
-          <h6><strong>Message:</strong> {game.message}</h6>
-          <Link to={`/games/${gameId}/edit`}>
-            <Button variant="success">Update</Button>
-          </Link>
-          <Button variant="danger" onClick={this.deleteGame}>Delete</Button>
+        <div className="game-card">
+          <Card>
+            <Card.Body>
+              <Card.Subtitle className="mb-2 text-muted">ID: {gameId}</Card.Subtitle>
+              <Card.Title>{game.title}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">{game.status ? "Online" : "Offline"}</Card.Subtitle>
+              <Card.Text>Message: {game.message}</Card.Text>
+              <Link to={`/games/${gameId}/edit`}><Button variant="success">Update</Button></Link>
+              <section className="divider"/>
+              <Button variant="danger" onClick={this.deleteGame}>Delete</Button>
+            </Card.Body>
+          </Card>
         </div>
       )
     }

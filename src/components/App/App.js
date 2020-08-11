@@ -64,11 +64,11 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/create' render={() => (
             <GameCreate msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} path='/games/:id/edit' render={(props) => (
+            <GameEdit {...props} msgAlert={this.msgAlert} user={user} />
+          )} />
           <AuthenticatedRoute user={user} exact path='/games/:id' render={({ match, location }) => (
             <GameShow msgAlert={this.msgAlert} match={match} location ={location} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/games/:id/edit' render={(props) => (
-            <GameEdit {...props} msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

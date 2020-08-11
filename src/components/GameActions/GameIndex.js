@@ -1,9 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { Spinner, Button } from 'react-bootstrap'
+import { Spinner } from 'react-bootstrap'
 
 import apiUrl from './../../apiConfig.js'
+// import messages from './../AutoDismissAlert/messages'
 
 class GameIndex extends React.Component {
   state = {
@@ -22,10 +23,6 @@ class GameIndex extends React.Component {
       this.setState({
         games: response.data.games
       })
-    })
-    .catch(error => {
-      // handle the error
-      console.log(error)
     })
   }
 
@@ -56,13 +53,10 @@ class GameIndex extends React.Component {
     }
 
     return (
-      <div>
-        <Link to={`/create`}>
-          <Button variant="primary" size="lg">Create</Button>
-        </Link>
-        <h2>People Currently Looking for Games:</h2>
-          {gameJSX}
-        </div>
+      <div className="game-index">
+        <h2>Users Currently Looking for Games:</h2>
+        {gameJSX}
+      </div>
     )
   }
 }

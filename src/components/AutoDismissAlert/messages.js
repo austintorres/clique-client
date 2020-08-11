@@ -6,5 +6,11 @@ export default {
   signOutSuccess: 'Come back soon!',
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
-  getFailure: 'Something went wrong!'
+  getFailure: 'Something went wrong!',
+  createGameSuccess: 'Now you are one step closer to meeting new gamers!',
+  createGameFailure: 'Please try again!',
+  deleteSuccess: 'Sayonara, sucker!!',
+  deleteFailure: 'We are working on it!',
+  updateGameSuccess: 'That post was updated.',
+  updateGameFailure: 'Yikes! Working on that.'
 }
