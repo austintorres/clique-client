@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Poppins:wght@200&family=Rubik:wght@500&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Poppins:wght@200&family=Rubik:wght@500&family=Shrikhand&family=VT323&display=swap');
 
 body {
   background-color: #0A0A0A;
@@ -46,6 +46,7 @@ a:hover {
 li {
   text-align: center;
   text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 div {
@@ -192,6 +193,10 @@ ul, li {
   text-align: center;
   font-family: 'Inconsolata', monospace;
   background-color: #fff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -khtml-border-radius: 10px
 }
 
 //  CREATE FORM CSS
@@ -212,7 +217,7 @@ ul, li {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  -khtml-border-radius: 10px
+  -khtml-border-radius: 10px;
 }
 //
 
@@ -226,6 +231,10 @@ ul, li {
   padding-bottom: 30px;
   font-family: 'Inconsolata', monospace;
   background-color: #fff;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -khtml-border-radius: 10px
 }
 
 .edit-form-inner {

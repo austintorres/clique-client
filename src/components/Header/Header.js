@@ -5,9 +5,16 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#">Apparel</Nav.Link>
+    <NavDropdown title="Apparel" id="basic-nav-dropdown">
+      <NavDropdown.Item>T-Shirts</NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item>Sweatshirts & Hoodies</NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item>Accessories</NavDropdown.Item>
+    </NavDropdown>
     <NavDropdown title="Gaming" id="basic-nav-dropdown">
       <NavDropdown.Item href="#games">Show All Games</NavDropdown.Item>
+      <NavDropdown.Divider />
       <NavDropdown.Item href="#create">Create A Game</NavDropdown.Item>
     </NavDropdown>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
