@@ -60,6 +60,9 @@ DELETE | /games/:id
 ### Unsolved Problems
 
 - Would like to eventually create a functional message board for teams.
+- Would like to eventually add an apparel store.
+- Would like to eventually add a feature that filters game search by location.
+- Would like to eventually add more routes.
 
 ## Images
 
