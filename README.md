@@ -7,7 +7,7 @@ This application allows the user to create, update, and delete game postings.
 ## Important Links
 
 - [API Repository](https://github.com/austintorres/clique-server)
-- [Deployed API]()
+- [Deployed API](https://clique-server.herokuapp.com/)
 - [Front End Repository](https://github.com/austintorres/clique-client)
 - [Deployed Front End]()
 
