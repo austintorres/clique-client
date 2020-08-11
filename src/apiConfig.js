@@ -1,6 +1,6 @@
 let apiUrl
 const apiUrls = {
-  production: 'https://clique-server.herokuapp.com/',
+  production: 'https://agile-hamlet-80129.herokuapp.com/',
   development: 'http://localhost:4741'
 }
 

@@ -1,5 +1,3 @@
-![Clique Logo]()
-
 # Clique: A Description
 
 This application allows the user to create, update, and delete game postings.
@@ -9,7 +7,7 @@ This application allows the user to create, update, and delete game postings.
 - [API Repository](https://github.com/austintorres/clique-server)
 - [Deployed API](https://clique-server.herokuapp.com/)
 - [Front End Repository](https://github.com/austintorres/clique-client)
-- [Deployed Front End]()
+- [Deployed Front End](https://austintorres.github.io/clique-client/)
 
 ## Planning Story
 
