@@ -12,7 +12,6 @@ import GameIndex from '../GameActions/GameIndex'
 import GameCreate from '../GameActions/GameCreate'
 import GameShow from '../GameActions/GameShow'
 import GameEdit from '../GameActions/GameEdit'
-import Home from './../../Home'
 
 class App extends Component {
   constructor () {
