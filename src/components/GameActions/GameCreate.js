@@ -95,6 +95,7 @@ class GameCreate extends React.Component {
 
           <Form.Label>Location</Form.Label>
           <Form.Control as="select" onChange={this.handleInputChange} value={this.state.game.location} name="location">
+            <option></option>
             <option>Alabama</option>
             <option>Alaska</option>
             <option>Arizona</option>
