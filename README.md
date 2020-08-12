@@ -2,6 +2,14 @@
 
 This application allows the user to create, update, and delete game postings.
 
+
+## Setup Steps
+
+1. [Fork and clone](https://git.generalassemb.ly/ga-wdi-boston/meta/wiki/ForkAndClone) this repository.
+1. Run `npm install` to install all dependencies
+1. Use `npm start` to spin up the server.
+
+
 ## Important Links
 
 - [API Repository](https://github.com/austintorres/clique-server)

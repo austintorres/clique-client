@@ -40,7 +40,6 @@ class GameShow extends React.Component {
 
   render () {
     const game = this.props.location.state
-    console.log(game)
     if (this.state.deleted === true) {
       return <Redirect to='/games' />
     }
