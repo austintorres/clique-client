@@ -10,6 +10,8 @@ class GameEdit extends React.Component {
     game: {
       title: '',
       message: '',
+      gamertag: '',
+      location: '',
       status: '',
     },
     updated: false
@@ -52,6 +54,8 @@ class GameEdit extends React.Component {
         game: {
           title: this.state.game.title,
           message: this.state.game.message,
+          gamertag: this.state.game.gamertag,
+          location: this.state.game.location,
           status: this.state.game.status
         }
       }

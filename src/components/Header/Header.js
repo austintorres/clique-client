@@ -10,6 +10,8 @@ const authenticatedOptions = (
       <NavDropdown.Divider />
       <NavDropdown.Item>Sweatshirts & Hoodies</NavDropdown.Item>
       <NavDropdown.Divider />
+      <NavDropdown.Item>Hats</NavDropdown.Item>
+      <NavDropdown.Divider />
       <NavDropdown.Item>Accessories</NavDropdown.Item>
     </NavDropdown>
     <NavDropdown title="Gaming" id="basic-nav-dropdown">

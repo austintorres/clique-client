@@ -58,9 +58,11 @@ class GameShow extends React.Component {
           <Card>
             <Card.Body>
               <Card.Subtitle className="mb-2 text-muted">ID: {gameId}</Card.Subtitle>
+              <Card.Subtitle className="mb-2 text-muted">Status: {game.status ? "Online" : "Offline"}</Card.Subtitle>
               <Card.Title>{game.title}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">{game.status ? "Online" : "Offline"}</Card.Subtitle>
               <Card.Text>Message: {game.message}</Card.Text>
+              <Card.Text>Gamertag: {game.gamertag}</Card.Text>
+              <Card.Text>Location: {game.location}</Card.Text>
               <Link to={`/games/${gameId}/edit`}><Button variant="success">Update</Button></Link>
               <section className="divider"/>
               <Button variant="danger" onClick={this.deleteGame}>Delete</Button>
