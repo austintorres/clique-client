@@ -31,16 +31,14 @@ As a gamer, playing solo can be boring at times. **Clique** allows online gamers
 - As a user I want to edit or delete game requests
 - (Version 1) As a user I want to be able to see my own game requests.
 
-### Technologies Used (Back End)
+### Technologies Used (Front End)
 
-- Express
-- MongoDB
-- Mongoose
-- Node.JS
-- React
-- Bootstrap
-- HTML
+- ReactJS
+- JavaScript
 - CSS
+- HTML
+- Bootstrap
+- cURL
 
 ### Catalog of Routes
 
