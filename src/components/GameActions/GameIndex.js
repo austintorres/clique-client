@@ -33,7 +33,7 @@ class GameIndex extends React.Component {
       gameJSX = <Spinner animation="border" role="status"><span className="sr-only">Loading...</span></Spinner>
       // if the API responds with no games
     } else if (this.state.games.length === 0) {
-      gameJSX = <p>No one is looking for a game right now, you can always add one!</p>
+      gameJSX = <p className="game-auto-msg">No one is looking for a game right now, you can always add one!</p>
       // if the API responds with games
     } else {
       gameJSX = (
