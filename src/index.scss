@@ -59,6 +59,15 @@ ul, li {
   list-style-type: none;
 }
 
+.feedback-link {
+  color: #000;
+  text-decoration: underline;
+}
+
+.feedback-link:hover {
+  text-decoration: underline;
+}
+
 .game-auto-msg {
   color: #fff;
 }
