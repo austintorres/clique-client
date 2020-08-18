@@ -12,8 +12,7 @@ const GuestLogin = () => {
           <Card.Text>We are still under construction, in the meantime, you can still search, create, update, and delete games.</Card.Text>
           <Card.Text>Have fun! And please send feedback to <a href = "mailto: hello@austintorres.com" className="feedback-link">hello@austintorres.com</a></Card.Text>
           <Card.Text>Please feel free to use our guest log in</Card.Text>
-          <Card.Text>E-mail: guest@guest.com</Card.Text>
-          <Card.Text>Password: 123</Card.Text>
+          <Card.Text>E-mail: guest@guest.com | Password: 123</Card.Text>
           </strong>
         </Card.Body>
       </Card>
